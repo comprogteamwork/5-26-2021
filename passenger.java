@@ -71,7 +71,7 @@ public  class passenger extends AirlineType{
         passengerAge.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
         passengerAge.setBounds(20,170,90,30);
         	
-        inputAge = new JTextField("0");
+        inputAge = new JTextField();
         passengerPanel.add(inputAge);
         inputAge.setBounds(70,170,300,30);
         inputAge.setFont(new Font("Berlin Sans FB", Font.PLAIN, 18));
@@ -777,34 +777,42 @@ public  class passenger extends AirlineType{
 			seniorStore = seniorCitizenTextField.getText();
 			
 			
-			userAge = Integer.parseInt(userInputAge);
+			
 			childCount = Integer.parseInt(childStore);
 			adultCount = Integer.parseInt(adultStore);
 			seniorCount = Integer.parseInt(seniorStore);
 			
 			
-			if(userAge >= 60) {
-				seniorCount +=1;
-				}else if(userAge >18 && userAge <60) {
-					adultCount +=1;
-	
-				}else if(userAge <=18) {
-					childCount +=1;
-					
-					
-				}
 			
 			
 	
-			if(userInputAge.equalsIgnoreCase("")) {
+			if(userInputAge.equals("")) {
 				JOptionPane.showMessageDialog(null, "INVALID AGE","INVALID INPUT",JOptionPane.ERROR_MESSAGE);
+					if(userInputName.equals("")) {
+						JOptionPane.showMessageDialog(null, "INVALID NAME\nPLEASE INPUT YOUR NAME","INVALID NAME.",JOptionPane.ERROR_MESSAGE);
+
+					}
 				
 				}else if(userInputName.equals("")) {
 					JOptionPane.showMessageDialog(null, "INVALID NAME\nPLEASE INPUT YOUR NAME","INVALID NAME.",JOptionPane.ERROR_MESSAGE);
+						if(userInputAge.equals("")) {
+							JOptionPane.showMessageDialog(null, "INVALID AGE","INVALID INPUT",JOptionPane.ERROR_MESSAGE);
+						}
 			
-				
 				}else{		
 					
+					userAge = Integer.parseInt(userInputAge);
+					if(userAge >= 60) {
+						 
+						seniorCount +=1;
+						}else if(userAge >18 && userAge <60) {
+							adultCount +=1;
+			
+						}else if(userAge <=18) {
+							childCount +=1;
+							
+							
+						}
 					 if(passenger.adultCount==0 && passenger.seniorCount==0 && childCount>=1) {
 							
 							JOptionPane.showMessageDialog(null,"AGE BELOW 19 MUST ACCOMPANIED\nBY AT LEAST ONE ADULT OR SENIOR","WARNING",JOptionPane.ERROR_MESSAGE);
